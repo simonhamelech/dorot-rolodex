@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'David CLM', 'Frank Ruehl CLM', serif;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            padding: 20px;
+        }
+        
+        .card {
+            width: 800px;
+            height: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 350px 430px;
+            grid-template-rows: 120px 1fr;
+            gap: 10px;
+        }
+        
+        .cohen-card {
+            background: linear-gradient(135deg, #fff8e7 0%, #fff 100%);
+        }
+        
+        .levi-card {
+            background: linear-gradient(135deg, #f0f8ff 0%, #fff 100%);
+        }
+        
+        .israel-card {
+            background: linear-gradient(135deg, #f0fff0 0%, #fff 100%);
+        }
+        
+        .status-tab {
+            position: absolute;
+            top: -30px;
+            height: 30px;
+            width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-bottom: none;
+        }
+
+        .cohen-tab { 
+            background: #FFD700;
+            left: 20px;
+        }
+        
+        .levi-tab { 
+            background: #87CEEB;
+            left: 160px;
+        }
+        
+        .israel-tab { 
+            background: #98FB98;
+            left: 300px;
+        }
+        
+        .section {
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2px;
+        }
+        
+        .field {
+            margin: 2px 0;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            white-space: nowrap;
+        }
+        
+        .field-label {
+            font-weight: bold;
+            min-width: 90px;
+            font-size: 0.95em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+        
+        th, td {
+            padding: 3px 8px;
+            border: 1px solid #ccc;
+            text-align: right;
+            white-space: nowrap;
+            height: 22px;
+        }
+        
+        th {
+            text-align: center;
+        }
+
+        .empty-row td {
+            border: 1px solid #eee;
+        }
+
+        .father-section { 
+            grid-column: 1;
+            grid-row: 1;
+        }
+        
+        .mother-section { 
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        .children-section { 
+            grid-column: 1;
+            grid-row: 2;
+        }
+        
+        .yahrzeit-section { 
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .children-table td:first-child { width: 50%; }
+        .children-table td:nth-child(2) { width: 25%; }
+        .children-table td:last-child { width: 25%; }
+        
+        .yahrzeit-table td:first-child { width: 40%; }
+        .yahrzeit-table td:nth-child(2) { width: 30%; }
+        .yahrzeit-table td:last-child { width: 30%; }
+    </style>
+</head>
+<body>
+    <!-- Cohen Card -->
+    <div class="card cohen-card">
+        <div class="status-tab cohen-tab">פרידמן</div>
+        
+        <div class="section mother-section">
+            <div class="section-title">אם</div>
+            <div class="field">
+                <span class="field-label">שם:</span>
+                <span>רבקה לאה בת שרה</span>
+            </div>
+            <div class="field">
+                <span class="field-label">יום הולדת:</span>
+                <span>כ׳ באדר תש״ן</span>
+            </div>
+        </div>
+ 
+        <div class="section father-section">
+            <div class="section-title">אב</div>
+            <div class="field">
+                <span class="field-label">שם:</span>
+                <span>משה יוסף בן אברהם הכהן</span>
+            </div>
+            <div class="field">
+                <span class="field-label">יום הולדת:</span>
+                <span>ט״ו בשבט תש״ן</span>
+            </div>
+            <div class="field">
+                <span class="field-label">פרשת בר מצווה:</span>
+                <span>בראשית</span>
+            </div>
+        </div>
+        
+        <div class="section yahrzeit-section">
+            <div class="section-title">יורצייט</div>
+            <table class="yahrzeit-table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>תאריך</th>
+                        <th>קשר</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>אברהם בן יצחק</td>
+                        <td>ב׳ באייר תש״ף</td>
+                        <td>אבא של האב</td>
+                    </tr>
+                    <tr>
+                        <td>שרה בת יעקב</td>
+                        <td>ט״ו בכסלו תשפ״א</td>
+                        <td>אמא של האם</td>
+                    </tr>
+                    <tr>
+                        <td>יצחק בן משה</td>
+                        <td>כ׳ בתמוז תשפ״ב</td>
+                        <td>סבא של האב</td>
+                    </tr>
+                    <tr>
+                        <td>חיים בן דוד</td>
+                        <td>ג׳ באלול תשפ״ג</td>
+                        <td>דוד של האם</td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section children-section">
+            <div class="section-title">ילדים</div>
+            <table class="children-table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>יום הולדת</th>
+                        <th>פרשת בר מצווה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>אברהם דוד בן משה יוסף הכהן</td>
+                        <td>א׳ בניסן תש״ס</td>
+                        <td>וירא</td>
+                    </tr>
+                    <tr>
+                        <td>שרה רחל בת משה יוסף הכהן</td>
+                        <td>ט״ו באייר תשס״ב</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>יעקב חיים בן משה יוסף הכהן</td>
+                        <td>כ׳ בכסלו תשס״ד</td>
+                        <td>וישלח</td>
+                    </tr>
+                    <tr>
+                        <td>מרים לאה בת משה יוסף הכהן</td>
+                        <td>ג׳ בתמוז תשס״ו</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>יצחק אליהו בן משה יוסף הכהן</td>
+                        <td>י״ב באדר תשס״ח</td>
+                        <td>כי תשא</td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <!-- Levi Card -->
+    <div class="card levi-card">
+        <div class="status-tab levi-tab">רוזנברג</div>
+        
+        <div class="section father-section">
+            <div class="section-title">אב</div>
+            <div class="field">
+                <span class="field-label">שם:</span>
+                <span>אהרן יצחק בן מנחם הלוי</span>
+            </div>
+            <div class="field">
+                <span class="field-label">יום הולדת:</span>
+                <span>כ׳ בתמוז תשמ״ח</span>
+            </div>
+            <div class="field">
+                <span class="field-label">פרשת בר מצווה:</span>
+                <span>פנחס</span>
+            </div>
+        </div>
+        
+        <div class="section mother-section">
+            <div class="section-title">אם</div>
+            <div class="field">
+                <span class="field-label">שם:</span>
+                <span>חנה שרה בת רחל</span>
+            </div>
+            <div class="field">
+                <span class="field-label">יום הולדת:</span>
+                <span>ה׳ באלול תשמ״ט</span>
+            </div>
+        </div>
+        
+        <div class="section children-section">
+            <div class="section-title">ילדים</div>
+            <table class="children-table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>יום הולדת</th>
+                        <th>פרשת בר מצווה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>יעקב מאיר בן אהרן הלוי</td>
+                        <td>י״ב בחשון תשע״א</td>
+                        <td>תולדות</td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="section yahrzeit-section">
+            <div class="section-title">יורצייט</div>
+            <table class="yahrzeit-table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>תאריך</th>
+                        <th>קשר</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Yisrael Card -->
+    <div class="card israel-card">
+        <div class="status-tab israel-tab">ברגמן</div>
+        
+        <div class="section father-section">
+            <div class="section-title">אב</div>
+            <div class="field">
+                <span class="field-label">שם:</span>
+                <span>דוד חיים בן שמואל</span>
+            </div>
+            <div class="field">
+                <span class="field-label">יום הולדת:</span>
+                <span>ח׳ בניסן תשמ״ה</span>
+            </div>
+            <div class="field">
+                <span class="field-label">פרשת בר מצווה:</span>
+                <span>מצורע</span>
+            </div>
+        </div>
+        
+        <div class="section mother-section">
+            <div class="section-title">אם</div>
+            <div class="field">
+                <span class="field-label">שם:</span>
+                <span></span>
+            </div>
+            <div class="field">
+                <span class="field-label">יום הולדת:</span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="section children-section">
+            <div class="section-title">ילדים</div>
+            <table class="children-table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>יום הולדת</th>
+                        <th>פרשת בר מצווה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="section yahrzeit-section">
+            <div class="section-title">יורצייט</div>
+            <table class="yahrzeit-table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>תאריך</th>
+                        <th>קשר</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
